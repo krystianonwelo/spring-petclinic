@@ -1,6 +1,12 @@
 library 'zadanie-jenkins'
 pipeline {
-    agent { label  'slave-node' }
-    pipelineMaven()
-
+    agent none
+    stages {
+        stage('pipelineMaven') {
+            agent {label  'slave-node'}
+            steps{
+                pipelineMaven()
+            }
+        }
+    }
 }
